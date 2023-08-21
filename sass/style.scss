@@ -1,9 +1,29 @@
-$Linear-gradient-blue: hsl(249, 99%, 64%); 
-$Linear-gradient-purple: hsl(278, 94%, 30%);
+@use 'variablep';
+@use 'initials';
 
-$Red: hsl(0, 100%, 66%);
+body{
+    font-family: variablep.$font;
+}
 
-$White: hsl(0, 0%, 100%);
-$Light-grayish-violet: hsl(270, 3%, 87%);
-$Dark-grayish-violet: hsl(279, 6%, 55%);
-$Very-dark-violet: hsl(278, 68%, 11%)
+.main-container{
+    border: 2px solid red;
+    width: 375px;
+    margin: auto;
+    &__background-section{
+        background-image: url(../images/bg-main-mobile.png);
+        background-repeat: no-repeat;
+        height: 240px;
+    }
+    &__form-section{
+        padding: 90px 24px 45px;
+    }
+    @media (min-width: 1440px){
+        width: 1440px;
+        display: flex;
+        &__background-section{
+            background-image: url('../images/bg-main-desktop.png');
+            width: 900px;
+            height: 900px;
+        }
+    }
+}
