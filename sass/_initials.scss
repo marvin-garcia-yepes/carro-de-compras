@@ -1,4 +1,4 @@
-@use 'variablep';
+@use 'variables' as v;
 
 *{
     margin: 0;
@@ -7,5 +7,5 @@
   }
   body {
     font-size: 18px;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: v.$font;
   }
