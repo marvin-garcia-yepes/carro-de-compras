@@ -12,7 +12,6 @@ body {
 }
 
 .main-container {
-  border: 2px solid red;
   width: 375px;
   margin: auto;
 }
@@ -129,6 +128,130 @@ body {
     margin-top: 80px;
     padding-right: 30px;
   }
+}
+
+.form__label {
+  text-transform: uppercase;
+  font-size: 0.65em;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 8px;
+  color: hsl(278, 68%, 11%);
+  font-weight: bold;
+}
+.form__input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 18px;
+  border-radius: 5px;
+  font-family: "Space Grotesk", sans-serif;
+  border: 1px solid hsl(270, 3%, 87%);
+  padding-left: 10px;
+  font-size: 1em;
+  outline: none;
+}
+.form__input::placeholder {
+  color: hsl(270, 3%, 87%);
+}
+.form__date-cvc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+.form__date {
+  display: flex;
+  gap: 10px;
+}
+.form__submit {
+  background-color: hsl(278, 68%, 11%);
+  color: hsl(270, 3%, 87%);
+  width: 100%;
+  height: 50px;
+  border-radius: 9px;
+  font-size: 1em;
+  letter-spacing: 2px;
+  font-family: "Space Grotesk", sans-serif;
+}
+.form__submit:hover {
+  cursor: pointer;
+}
+@media (min-width: 1440) {
+  .form {
+    margin-top: 180px;
+    width: 385px;
+  }
+  .form__input {
+    margin-bottom: 40px;
+  }
+}
+
+.error {
+  color: hsl(0, 100%, 66%);
+  margin: -10px 0 18px;
+  font-size: 0.6em;
+}
+
+.form__errors-container {
+  display: flex;
+  gap: 5px;
+}
+
+.form__errors-container div {
+  width: 100px;
+  text-align: center;
+}
+
+.thanks-section {
+  display: none;
+  width: 375px;
+  margin-bottom: 60px;
+  margin: auto;
+}
+.thanks-section__img {
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.thanks-section__title {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: hsl(278, 68%, 11%);
+  margin-bottom: 24px;
+}
+.thanks-section__text {
+  text-align: center;
+  color: hsl(279, 6%, 55%);
+  font-size: 1.1em;
+  margin-bottom: 24px;
+}
+.thanks-section__button {
+  background-color: hsl(278, 68%, 11%);
+  color: hsl(270, 3%, 87%);
+  width: 100%;
+  height: 50px;
+  border-radius: 9px;
+  font-size: 1em;
+  letter-spacing: 2px;
+  font-family: "Space Grotesk", sans-serif;
+}
+.thanks-section__button:hover {
+  cursor: pointer;
+}
+@media (min-width: 1440px) {
+  .thanks-section {
+    margin-top: 180px;
+  }
+}
+
+.attribution {
+  font-size: 15px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
 
 /*# sourceMappingURL=styles.css.map */
