@@ -142,7 +142,7 @@
         }
     }
 
-    @media (min-width: 1440) {
+    @media (min-width: 1440px) {
         margin-top: 180px;
         width: 385px;
 
@@ -170,7 +170,7 @@
 
 .thanks-section {
     display: none;
-    width: 375px;
+    width: 100%;
     margin-bottom: 60px;
     margin: auto;
 

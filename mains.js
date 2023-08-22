@@ -62,34 +62,99 @@ numberInput.addEventListener('input', event=>{
 
 monthInput.addEventListener('input', ()=>{
     monthCard.innerText = monthInput.value;
+    validateLetters(monthInput, monthErrorDiv);
 });
 
 //Ingreso dinamico del año
 
 yearInput.addEventListener('input', ()=>{
     yearCard.innerText = yearInput.value;
+    validateLetters(yearInput, yearErrorDiv);
 });
 
 //Ingreso dinamico del CVC
 
 cvcInput.addEventListener('input', ()=>{
     cvcCard.innerText = cvcInput.value;
+    validateLetters(cvcInput, cvcErrorDiv);
 });
+
+
 
 //Boton confirm
 
 let confirmBtn = document.querySelector('.form__submit');
 
+let nameValidation = false;
+let numberValidation = false;
+let monthValidation = false;
+let yearValidation = false;
+let cvcValidation = false;
+
+let fromSection = document.querySelector('.form');
+let thankSection = document.querySelector('.thanks-section');
+
 confirmBtn.addEventListener('click', event=>{
     event.preventDefault();
-    console.log(parseInt(monthInput.value))
 
-    //validar mes
-    if(parseInt(monthInput.value)>0 && parseInt(monthInput.value)<=12){
-        showError(monthInput, monthErrorDiv, '', false);        
+    if (verifyIsFilled(nameInput, nameErrorDiv)) {
+        nameValidation = true;       
     }else{
-        showError(monthInput, monthErrorDiv, 'Mont incorrect');
+        nameValidation = false;
     }
+
+    //Validar numero
+    if (verifyIsFilled(numberInput, numberErrorDiv) == true){
+        if (numberInput.value.length == 19){
+            showError(numberInput, numberErrorDiv, '', false); 
+            numberValidation = true;           
+        }else{
+            showError(numberInput, numberErrorDiv, 'Wrong number');
+            numberValidation = false;
+        }
+        
+    }
+
+    //Validar mes
+    if (verifyIsFilled(monthInput, monthErrorDiv)) {
+        if(parseInt(monthInput.value)>0 && parseInt(monthInput.value)<=12){
+            showError(monthInput, monthErrorDiv, '', false); 
+            monthValidation = true;       
+        }else{
+            showError(monthInput, monthErrorDiv, 'Mont incorrect');
+            monthValidation = false;
+        }
+    }
+   
+    //Validar año
+    if (verifyIsFilled(yearInput, yearErrorDiv)) {
+        if (parseInt(yearInput.value)> 23 && parseInt(yearInput.value)<28 ) {
+            showError(yearInput, yearErrorDiv, '', false);
+            yearValidation = true;
+        }else{
+            showError(yearInput, yearErrorDiv, 'Wrong Year');
+            yearValidation = false;
+        }
+        
+    }
+
+    //Validar cvc
+    
+    if (verifyIsFilled(cvcInput, cvcErrorDiv)) {
+        if (cvcInput,value.length == 3) {
+            showError(cvcInput, cvcErrorDiv, '', false);  
+            cvcValidation = true;          
+        }else{
+            showError(cvcInput, cvcErrorDiv, 'Wrong CVC');
+            cvcValidation = false;
+        }
+    }
+
+    if(nameValidation == true && numberValidation == true && monthValidation == true  && yearValidation == true  && cvcValidation == true){
+        fromSection.styles.display = 'none';
+        thankSection.styles.display = 'block';
+    }
+
 });
 
 
@@ -103,4 +168,23 @@ function showError(divInput, divError, msgError, show = true){
         divError.innerText = msgError;
         divInput.style.borderColor = ' hsl(270, 3%, 87%)';
     } 
+}
+
+function verifyIsFilled(divInput, divError){
+    if (divInput.value.length> 0) {
+        showError(divInput, divError, "", false);  
+        return true;      
+    }else{
+        showError(divInput, divError, "Can't be blank");
+        return false;
+    }
+}
+
+function validateLetters(input, divError){
+    let regExp = /[A-z]/g;
+    if (regExp,test(input.value)) {
+        showError(input, divError, 'Wrong format, number only');        
+    }else{
+        showError(input, divError, '', false)
+    }
 }
